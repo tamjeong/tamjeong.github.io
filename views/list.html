@@ -1,0 +1,18 @@
+<div id = "category">
+        <h1>Category</h1>
+        <ul>
+            <% categories.forEach(category=>{ %>
+                <%= category.categoryName %>
+                <% posts.forEach(post=>{ %>
+                    <% if (post.value.category===category.categoryName) { %>
+                    <li>
+                        <%= post.value.title %>
+                    </li>
+                    <% } %>
+                <% }) %>
+            <% }) %>
+        </ul>      
+</div>
+    
+    
+

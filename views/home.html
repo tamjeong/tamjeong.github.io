@@ -1,0 +1,38 @@
+<header id= "header">
+    <div class="header">
+
+    </div>
+    <h1 class="ir_su">header이미지</h1>
+    <img src="images/header_bg.png" alt="탐정이미지">
+    <div class="header_tit">
+        <h1>Detective Code</h1>
+        
+    </div>
+</header>
+
+
+
+<div id="home">
+    <div class="container">
+        <% posts.forEach(homelist=>{ %>
+        <div class=home_list_box>
+            <a class="home_post_links" href="../convert/<%= homelist.folder %>/<%= homelist.fileName %>">          
+                <h1><%= homelist.value.title %></h1>
+                <p><%= homelist.value.desc %></p>
+            </a>
+            <span><%= makedate(homelist.value.date) %></span>
+        </div>
+        
+        <% }) %>
+    </div>
+</div>
+
+
+
+<% 
+function makedate(str){
+    var y = str.substr(0,4);
+    var m = str.substr(4,2);
+    var d = str.substr(6,2);
+    return y+"-"+m+"-"+d;
+} %> 
