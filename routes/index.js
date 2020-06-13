@@ -303,7 +303,7 @@ html=ejs.render(indexHtmlFormat,{
     footer
 });
 
-
+fs.writeFileSync('./index.html',html);
 
 
 /* GET home page. */
