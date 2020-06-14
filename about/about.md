@@ -1,6 +1,6 @@
 ---
 username : tamjeong
-date : 20200519
+date : "20200519"
 ---
 
 저는 박기범입니다.

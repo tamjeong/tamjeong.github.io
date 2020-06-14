@@ -1,12 +1,12 @@
 <div id="post">
-    <h1><%= value.title %></h1>
-    <span><%= makedate(value.date) %></span>
-    <div class = "post_body">
-        <%= body %>   
-    </div>
+    <div class= "post">
+        <h1><%= value.title %></h1>
+        <span><%= makedate(value.date) %></span>
+        <div class = "post_body">
+            <%- body %>   
+        </div>
+    </div> 
 </div>
-
-
 
 <% 
 function makedate(str){
@@ -15,3 +15,4 @@ function makedate(str){
     var d = str.substr(6,2);
     return y+"-"+m+"-"+d;
 } %> 
+

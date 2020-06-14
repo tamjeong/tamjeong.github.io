@@ -12,19 +12,16 @@
 
 
 
-<div id="home">
-    <div class="container">
-        <% posts.forEach(homelist=>{ %>
-        <div class=home_list_box>
-            <a class="home_post_links" href="../convert/<%= homelist.folder %>/<%= homelist.fileName %>">          
-                <h1><%= homelist.value.title %></h1>
-                <p><%= homelist.value.desc %></p>
-            </a>
-            <span><%= makedate(homelist.value.date) %></span>
-        </div>
-        
-        <% }) %>
-    </div>
+<div id="home">   
+    <% posts.forEach(homelist=>{ %>
+    <div class=home_list_box>
+        <a class="home_post_links" href="../convert/<%= homelist.folder %>/<%= homelist.fileName %>">          
+            <h1><%= homelist.value.title %></h1>
+            <p><%= homelist.value.desc %></p>
+        </a>
+        <span><%= makedate(homelist.value.date) %></span>
+    </div>       
+    <% }) %>
 </div>
 
 

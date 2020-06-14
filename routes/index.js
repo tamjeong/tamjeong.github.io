@@ -38,13 +38,12 @@ const homeHtmlFormat = fs.readFileSync("./views/home.html","utf8");
 const postHtmlFormat = fs.readFileSync("./views/post.html","utf8");
 const listHtmlFormat = fs.readFileSync("./views/list.html","utf8");
 
-const navHtmlFormat = fs.readFileSync("./public/nav.html","utf8");
-const footerHtmlFormat = fs.readFileSync("./public/footer.html","utf8");
+const nav = fs.readFileSync("./public/nav.html","utf8");
+const footer = fs.readFileSync("./public/footer.html","utf8");
 
 
 
 
-const convertSite=[];
 
 const directories = fs.readdirSync(directoryPath);
 
@@ -118,8 +117,9 @@ directories.forEach((directory, index)=>{
         );
         let value= extractValue(markdownFile);
         let body = md.render(extractBody(markdownFile));
+
+
         let categoryName= value.category;
-    
         let folder= value.category&&value.category.toLocaleLowerCase();
         let fileName=(
             file.slice(0,file.indexOf(".")).toLocaleLowerCase()+`.html`
@@ -148,7 +148,6 @@ directories.forEach((directory, index)=>{
                 date : value.date,
                 path : `/convert/${folder}/${fileName}`
             });
-//console.log(allPosts);
 
             if(i<0){
                 files.push({
@@ -173,7 +172,6 @@ directories.forEach((directory, index)=>{
 //posts 포스트 모아놓음 [{value:"", body:"", fileName:""}]
 //categoryByfiles: 카테고리 별로 포스터 모음 [{categoryName:"", folder:"", files:""}]
 
-console.log(posts);
 
 
 posts=posts.sort((a,b)=>{
@@ -188,19 +186,6 @@ const aboutValue = extractValue(about);
 
 
 
-const nav = ejs.render(navHtmlFormat, {
-    about: aboutValue,
-    categories: categoryByfiles,
-    
-});
-
-const footer = ejs.render(footerHtmlFormat, {
-    about: aboutValue,
-    
-    
-});
-
-//console.log(headerHtmlFormat);
 
 
 
@@ -219,7 +204,7 @@ if(!fs.existsSync(dir)){
 }
 fs.writeFileSync("./convert/about/about.html",aboutHtml);
 
-
+console.log(posts);
 
 //list 페이지 생성
 
@@ -269,10 +254,9 @@ categoryByfiles.forEach(category=>{
             value: file.value,
             //path: path
         });
-    //console.log(sortFiles);
 
         const html = ejs.render(indexHtmlFormat, {
-            title: `${file.value.title} | ${aboutValue.username}`,
+            title: `${file.value.title}`,
             main: post,
             nav: nav,
             footer: footer
@@ -284,7 +268,7 @@ categoryByfiles.forEach(category=>{
 
 
 
-//console.log(posts);
+
 
 
 

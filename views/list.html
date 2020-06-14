@@ -1,18 +1,27 @@
-<div id = "category">
-        <h1>Category</h1>
+<div id = "category">   
+    <div class="category">
+    <h1>Category</h1>
         <ul>
             <% categories.forEach(category=>{ %>
-                <%= category.categoryName %>
+            <div class="category_box">
+                <h2><%= category.categoryName %></h2>
                 <% posts.forEach(post=>{ %>
                     <% if (post.value.category===category.categoryName) { %>
                     <li>
-                        <%= post.value.title %>
+                        <a href="/convert/<%= post.folder %>/<%= post.fileName %>"><%= post.value.title %></a>
+                        <span><%= makedate(post.value.date) %></span>
                     </li>
                     <% } %>
                 <% }) %>
+            </div>
             <% }) %>
         </ul>      
+    </div>       
 </div>
-    
-    
-
+<% 
+function makedate(str){
+    var y = str.substr(0,4);
+    var m = str.substr(4,2);
+    var d = str.substr(6,2);
+    return y+"-"+m+"-"+d;
+} %> 
